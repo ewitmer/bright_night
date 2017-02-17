@@ -1,0 +1,20 @@
+{
+  "name": "bright-night",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.3.0"
+  },
+  "scripts": {
+    "build": "concurrently \"cd client && npm run build\" \"cd server && npm run build\"",
+    "install": "(cd client && npm install) && (cd server && npm install)",
+    "start": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=3001 npm start\"",
+    "start:prod": "cd server && npm start:prod"
+  }
+}
