@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
+// Higher order component requir
 export default function(ComposedComponent) {
 	class Authentication extends Component {
 		
@@ -27,7 +28,7 @@ export default function(ComposedComponent) {
 	}
 	
 	function mapStateToProps(state) {
-    	return {authenticated: state.authentication}
+    	return {authenticated: state.authentication.authenticated}
 	};
 
 	return connect(mapStateToProps)(Authentication);

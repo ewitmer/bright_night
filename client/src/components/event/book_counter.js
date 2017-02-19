@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions'
-import store from '../store';
+import * as actions from '../../actions'
+import store from '../../store';
 
 export class BookCounter extends Component {
 
@@ -24,8 +24,11 @@ export class BookCounter extends Component {
 	}
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state, props) => {
+
+  return {
     count: state.logEvent.counter
-});
+  }
+}
 
 export default connect(mapStateToProps)(BookCounter);

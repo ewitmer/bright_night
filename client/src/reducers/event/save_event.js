@@ -1,4 +1,4 @@
-import { SAVE_EVENT } from '../actions/index';
+import { SAVE_EVENT } from '../../actions/index';
 
 export default function (state=[], action) {
 	switch(action.type) {

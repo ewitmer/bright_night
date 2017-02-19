@@ -1,6 +1,6 @@
-import { BOOK_INCREMENT } from '../actions/index';
-import { BOOK_DECREMENT } from '../actions/index';
-import { CLEAR_EVENT } from '../actions/index';
+import { BOOK_INCREMENT } from '../../actions/index';
+import { BOOK_DECREMENT } from '../../actions/index';
+import { CLEAR_EVENT } from '../../actions/index';
 
 // returns a count that cannot go below 0
 export default function (state = 0, action) {

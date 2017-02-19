@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import store from '../store';
+import * as actions from '../../actions';
+import store from '../../store';
 import CommentBox from './comment_box';
 import CommentList from './comment_list';
 import BookCounter from './book_counter';

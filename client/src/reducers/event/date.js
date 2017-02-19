@@ -1,4 +1,4 @@
-import { SAVE_DATE } from '../actions/index';
+import { SAVE_DATE } from '../../actions/index';
 
 let today = new Date();
 let dd = today.getDate();

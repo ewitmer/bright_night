@@ -1,5 +1,5 @@
-import { UPDATE_COMMENT } from '../actions/index';
-import { CLEAR_EVENT } from '../actions/index';
+import { UPDATE_COMMENT } from '../../actions/index';
+import { CLEAR_EVENT } from '../../actions/index';
 
 export default function (state='', action) {
 	switch(action.type) {

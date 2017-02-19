@@ -13,9 +13,6 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
 		if (err) { return done(err); }
 		if (!user) { return done(null, false); }
 
-		// access user pw
-		const dbPassword = user.password;
-
 		// compare submitted hashed pw to db hashed pw
 		user.comparePassword(password, function(err, isMatch) {
 			if (err) { return done(err) }

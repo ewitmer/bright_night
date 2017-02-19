@@ -1,3 +1,8 @@
+import { browserHistory } from 'react-router';
+
+/*/////////////////////////////////////////////
+        LOG READING SESSION ACTIONS
+/////////////////////////////////////////////*/
 
 export const BOOK_INCREMENT = 'BOOK_INCREMENT';
 export const bookIncrement = () => ({
@@ -38,6 +43,10 @@ export const clearEvent = () => ({
     type: CLEAR_EVENT
 })
 
+/*/////////////////////////////////////////////
+        SET READING GOAL ACTIONS
+/////////////////////////////////////////////*/
+
 export const BOOK_GOAL_INCREMENT = 'BOOK_GOAL_INCREMENT';
 export const bookGoalIncrement = () => ({
     type: BOOK_GOAL_INCREMENT
@@ -58,10 +67,61 @@ export const dayGoalDecrement = () => ({
     type: DAY_GOAL_DECREMENT
 });
 
-export const CHANGE_AUTH = 'CHANGE_AUTH';
-export const authenticate = (isLoggedIn) => ({
-    type: CHANGE_AUTH,
-    payload: isLoggedIn
+/*/////////////////////////////////////////////
+        AUTHORIZE USER ACTIONS
+/////////////////////////////////////////////*/
+
+export const AUTH_USER = 'AUTH_USER';
+export const authUser = () => ({
+    type: AUTH_USER
 })
+
+export const UNAUTH_USER = 'UNAUTH_USER';
+export const unauthUser = () => ({
+    type: UNAUTH_USER
+})
+
+export const AUTH_ERR = 'AUTH_ERROR';
+export const authErr = () => ({
+    type: AUTH_ERR
+})
+
+export function signinUser({ email, password }) {
+    return function(dispatch) {
+ 
+        // submit email & pw to server
+        fetch('/signin', {
+            method: 'POST',
+            body: JSON.stringify({
+                email: email,
+                password: password})
+        }).then(response => {
+    
+            return response.json();
+       
+        }).then(object => {
+
+            // if success, update state to indicate user is authenticated
+            dispatch({ type: AUTH_USER });
+
+            // save jwt token from response 
+            localStorage.setItem('token', object.token);
+
+            //redirect to feature
+            browserHistory.push('/progress');
+        }).catch(response => {
+            //request fails
+            dispatch(authError('Bad Login info'))
+        })
+    }
+}
+
+export function authError(error) {
+    return {
+        type: AUTH_ERR,
+        payload: error
+    }
+}
+
 
 
