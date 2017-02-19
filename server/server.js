@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import router from './router';
 import mongoose from 'mongoose';
+import config from '../config';
 const app = express()
 
 
@@ -15,7 +16,7 @@ app.use(bodyParser.json({ type: '*/*'}));
 router(app);
 
 // DB setup 
-mongoose.connect('mongodb://admin:admin123@ds139939.mlab.com:39939/bright-night')
+mongoose.connect(config.db)
 //Server setup
 app.set('port', (process.env.PORT || 3001))
 const server = http.createServer(app)
