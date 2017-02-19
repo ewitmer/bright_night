@@ -4,15 +4,6 @@ import * as actions from '../../actions';
 
 class Signin extends Component {
 
-	
-	authButton() {
-		if (this.props.authenticated) {
-			console.log(this.props)
-			return <button onClick={() => this.props.unauthUser}>Sign Out</button>
-		}
-		return <button>Sign In</button>
-	}
-
 	handleFormSubmit(event) {
 		event.preventDefault();
 		if (this.props.authenticated) { 

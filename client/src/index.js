@@ -9,6 +9,8 @@ import GoalSubmit from './components/goals/goal_submit';
 import EventSubmit from './components/event/event_submit';
 import ProgressView from './components/progress/progress_view';
 import Signin from './components/auth/signin';
+import Signout from './components/auth/signout';
+import Signup from './components/auth/signup';
 import Navigation from './components/nav/navigation';
 import Header from './components/nav/header';
 import store from './store';
@@ -28,6 +30,10 @@ ReactDOM.render(
 				<Route path="/signin" component={Signin}>
 				</Route>
 				<Route path="/nav" component={Navigation}>
+				</Route>
+				<Route path="/signout" component={Signout}>
+				</Route>
+				<Route path="/signup" component={Signup}>
 				</Route>
 			</Route>
 		</Router>

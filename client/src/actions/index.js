@@ -103,7 +103,6 @@ export function signinUser({ email, password }) {
 
             // if success, update state to indicate user is authenticated
             dispatch({ type: AUTH_USER });
-
             // save jwt token from response 
             localStorage.setItem('token', object.token);
 
@@ -111,9 +110,47 @@ export function signinUser({ email, password }) {
             browserHistory.push('/header');
         }).catch(response => {
             //request fails
-            dispatch(authError('Bad Login info'))
+            dispatch(authError('Incorrect Username or Password'))
         })
     }
+}
+
+export function signupUser({ email, password }) {
+    return function(dispatch) {
+ 
+        // submit email & pw to server
+        fetch('/signup', {
+            method: 'POST',
+            body: JSON.stringify({
+                email: email,
+                password: password})
+        }).then(response => {
+
+            return response.json();
+       
+        }).then(object => {
+
+            // if success, update state to indicate user is authenticated
+            if (object.error) {
+                dispatch(authError(object.error))
+            } else {
+                dispatch({ type: AUTH_USER });
+                // save jwt token from response 
+                localStorage.setItem('token', object.token);
+
+                //redirect to feature
+                browserHistory.push('/header');
+            }
+        }).catch(response => {
+
+            dispatch(authError('Error'))
+        })
+    }
+}
+
+export function signoutUser() {
+    localStorage.removeItem("token");
+    return { type: UNAUTH_USER };
 }
 
 export function authError(error) {

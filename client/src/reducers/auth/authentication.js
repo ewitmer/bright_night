@@ -6,7 +6,7 @@ import { AUTH_ERR } from '../../actions/index';
 export default function(state = {authenticated: false}, action) {
 	switch(action.type) {
 		case AUTH_USER:
-			return { ...state, authenticated: true };
+			return { ...state, error: null, authenticated: true };
 		case UNAUTH_USER:
 			return { ...state, authenticated: false };
 		case AUTH_ERR:
