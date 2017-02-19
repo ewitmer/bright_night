@@ -10,17 +10,20 @@ import EventSubmit from './components/event/event_submit';
 import ProgressView from './components/progress/progress_view';
 import Signin from './components/auth/signin';
 import Navigation from './components/nav/navigation';
+import Header from './components/nav/header';
 import store from './store';
 
 ReactDOM.render(
 	<Provider store={store}>
 		<Router history={browserHistory}>
 			<Route path="/" component={App}>
+				<Route path="/header" component={requireAuth(Header)}>
+				</Route>
 				<Route path="/goals" component={requireAuth(GoalSubmit)}>
 				</Route>
-				<Route path="/log" component={EventSubmit}>
+				<Route path="/log" component={requireAuth(EventSubmit)}>
 				</Route>
-				<Route path="/progress" component={ProgressView}>
+				<Route path="/progress" component={requireAuth(ProgressView)}>
 				</Route>
 				<Route path="/signin" component={Signin}>
 				</Route>

@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import Header from './components/nav/header';
 import './App.css';
-import SignUp from './components/auth/sign_up'
+import Navigation from './components/nav/navigation';
 
 export default class App extends Component {
 
   render() {
     return (
       <div>
-        <Header />
+        <Navigation />
         {this.props.children}
-        <SignUp />
       </div>
     );
   }

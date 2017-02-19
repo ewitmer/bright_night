@@ -8,7 +8,7 @@ class Navigation extends Component {
 		//if user is authenticated,
 		if (this.props.authenticated) {
 			return <li>
-				<Link to="/signout">Sign In</Link>
+				<Link to="/signout">Sign Out</Link>
 			</li>
 		} else {
 			return [
@@ -25,7 +25,7 @@ class Navigation extends Component {
 	render() {
 		return (
 			<nav>
-				<Link to="/">Redux Auth</Link>
+				<Link to="/">Home</Link>
 				<ul>
 					{this.renderLinks()}
 				</ul>

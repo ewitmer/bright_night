@@ -108,7 +108,7 @@ export function signinUser({ email, password }) {
             localStorage.setItem('token', object.token);
 
             //redirect to feature
-            browserHistory.push('/progress');
+            browserHistory.push('/header');
         }).catch(response => {
             //request fails
             dispatch(authError('Bad Login info'))
