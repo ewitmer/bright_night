@@ -82,8 +82,24 @@ export const unauthUser = () => ({
 })
 
 export const AUTH_ERR = 'AUTH_ERROR';
-export const authErr = () => ({
-    type: AUTH_ERR
+export function authError(error) {
+    return {
+        type: AUTH_ERR,
+        payload: error
+    }
+}
+
+
+export const FETCH_MSG = 'FETCH_MSG';
+export const fetchMsg = (message) => ({
+    type: FETCH_MSG,
+    payload: message
+})
+
+export const UPDATE_ACTIVITY = 'UPDATE_ACTIVITY';
+export const updateActivity = (array) => ({
+    type: UPDATE_ACTIVITY,
+    payload: array
 })
 
 export function signinUser({ email, password }) {
@@ -105,6 +121,7 @@ export function signinUser({ email, password }) {
             dispatch({ type: AUTH_USER });
             // save jwt token from response 
             localStorage.setItem('token', object.token);
+            localStorage.setItem('user', object.user);
 
             //redirect to feature
             browserHistory.push('/header');
@@ -137,6 +154,7 @@ export function signupUser({ email, password }) {
                 dispatch({ type: AUTH_USER });
                 // save jwt token from response 
                 localStorage.setItem('token', object.token);
+                localStorage.setItem('user', object.user)
 
                 //redirect to feature
                 browserHistory.push('/header');
@@ -150,15 +168,69 @@ export function signupUser({ email, password }) {
 
 export function signoutUser() {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
     return { type: UNAUTH_USER };
 }
 
-export function authError(error) {
+
+
+const SUCCESS_MSG = 'SUCCESS_MSG'
+export function successMsg(message) {
     return {
-        type: AUTH_ERR,
-        payload: error
+        type: SUCCESS_MSG,
+        payload: message
     }
 }
+
+export function fetchMessage() {
+    return function(dispatch) {
+ 
+        // submit email & pw to server
+        fetch('/auth', {
+            method: 'GET',
+            headers: { authorization: localStorage.getItem("token")}
+        }).then(response => {
+            console.log(response)
+            return response.json();
+       
+        }).then(object => {
+            dispatch(fetchMsg(object.message))
+            console.log(object)
+        }).catch(response => {
+
+            dispatch(authError('Error'))
+        })
+    }
+}
+
+export function logEvent(event) {
+    return function(dispatch) {
+ 
+        // submit email & pw to server
+        fetch('/logevent', {
+            method: 'POST',
+            headers: { authorization: localStorage.getItem("token")},
+            body: JSON.stringify({id: localStorage.getItem("user"), event: event})
+        }).then(response => {
+
+            return response.json();
+
+        }).then(object => {
+            console.log(object)
+            if (object.error) {
+                dispatch(authError(object.error))
+            } else if (object.message) {
+                dispatch(successMsg(object.message))
+                dispatch(updateActivity(object.activity))
+            }
+    }).catch(response => {
+
+            dispatch(authError('Error'))
+        })
+    }
+}
+
 
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {Router, Route, browserHistory} from 'react-router';
+import {Router, IndexRoute, Route, browserHistory} from 'react-router';
 import App from './App';
 import './index.css';
 import requireAuth from './components/auth/require_auth';
@@ -13,17 +13,27 @@ import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
 import Navigation from './components/nav/navigation';
 import Header from './components/nav/header';
+import Home from './components/home/home'
+import { AUTH_USER } from './actions/index';
 import store from './store';
+
+const token = localStorage.getItem('token')
+
+// if token is saved to localStorage, automatically authenticate user
+if (token) {
+	store.dispatch({ type: AUTH_USER })
+}
 
 ReactDOM.render(
 	<Provider store={store}>
 		<Router history={browserHistory}>
 			<Route path="/" component={App}>
+				<IndexRoute component={Home} />
 				<Route path="/header" component={requireAuth(Header)}>
 				</Route>
 				<Route path="/goals" component={requireAuth(GoalSubmit)}>
 				</Route>
-				<Route path="/log" component={requireAuth(EventSubmit)}>
+				<Route path="/log" component={EventSubmit}>
 				</Route>
 				<Route path="/progress" component={requireAuth(ProgressView)}>
 				</Route>

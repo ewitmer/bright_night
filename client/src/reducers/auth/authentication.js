@@ -1,6 +1,7 @@
 import { AUTH_USER } from '../../actions/index';
 import { UNAUTH_USER } from '../../actions/index';
 import { AUTH_ERR } from '../../actions/index';
+import { FETCH_MSG } from '../../actions/index';
 
 
 export default function(state = {authenticated: false}, action) {
@@ -11,6 +12,8 @@ export default function(state = {authenticated: false}, action) {
 			return { ...state, authenticated: false };
 		case AUTH_ERR:
 			return { ...state, error: action.payload}
+		case FETCH_MSG:
+			return { ...state, message: action.payload}
 		default: 
 			return state;
 	}

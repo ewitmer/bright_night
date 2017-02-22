@@ -5,6 +5,7 @@ import store from '../../store';
 
 export class BookCounter extends Component {
 
+
 	decrementClick() {
 		store.dispatch(actions.bookDecrement());
 	}
@@ -14,6 +15,7 @@ export class BookCounter extends Component {
 	}
 
 	render() {
+			console.log(store)
 		return (
 			<div>
 				{this.props.count}

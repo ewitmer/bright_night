@@ -10,20 +10,25 @@ import DatePicker from './date_picker';
 
 export class EventSubmit extends Component {
 
-  handleSubmit(event) {
-    event.preventDefault();
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div>{this.props.errorMessage}</div>    
+      )}
+
+    if (this.props.successMessage) {
+      return (
+        <div>{this.props.successMessage}</div>    
+    )}
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
     const eventLog = store.getState().logEvent;
     store.dispatch(actions.saveEvent(eventLog));
-
-    fetch('/', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-     body: JSON.stringify(eventLog)
-    }).then(store.dispatch(actions.clearEvent()))
-    }
+    this.props.logEvent(eventLog)
+    this.props.clearEvent();
+  }
 
   render() {
     return (
@@ -34,6 +39,7 @@ export class EventSubmit extends Component {
           <CommentBox />
           <CommentList />
          <form id="eventForm" onSubmit={this.handleSubmit.bind(this)} className="event-box">
+          {this.renderAlert()}
           <button action='submit'>Save Activity</button>
         </form>
       </div>
@@ -41,4 +47,11 @@ export class EventSubmit extends Component {
   }
 }
 
-export default connect(null, actions)(EventSubmit);
+function mapStateToProps(state) {
+  return { 
+    errorMessage: state.authentication.error,
+    successMessage: state.response
+
+   }
+}
+export default connect(mapStateToProps, actions)(EventSubmit);

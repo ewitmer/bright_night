@@ -26,15 +26,20 @@ exports.signup = function(req, res, next) {
 
 		const user = new User({
 			email: email,
-			password: password
-		});
+			password: password,
+			eventArray: [],
+			goals: {goalBooks: 3, goalDays: 5}
 
+		});
+		console.log(user)
 	// if it doesnt, create and save record
 		user.save(function(err) {
 			if (err) { return next(err) }
-	
+
 	//respond to request
-		res.json({ token: tokenForUser(user) })
+		res.json({ 
+			token: tokenForUser(user), 
+			user: user.id})
 
 		});
 	})
@@ -44,6 +49,8 @@ exports.signup = function(req, res, next) {
 exports.signin = function(req, res, next) {
 	// user has already had their email and pw auth;d;
 	// need to give them token
-	res.json({ token: tokenForUser(req.user)})
+	res.json({ 
+		token: tokenForUser(req.user),
+		user: req.user.id})
 
 }
