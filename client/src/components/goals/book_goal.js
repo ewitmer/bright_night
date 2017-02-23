@@ -6,10 +6,6 @@ import store from '../../store';
 
 export class BookGoalCount extends Component {
 
-	componentWillMount() {
-		this.props.fetchMessage();
-	}
-
 	decrementClick() {
 		store.dispatch(actions.bookGoalDecrement());
 	}
@@ -24,7 +20,6 @@ export class BookGoalCount extends Component {
 				{this.props.counter}
 				<button onClick={this.decrementClick}>-</button>
 				<button onClick={this.incrementClick}>+</button>
-				{this.props.message}
 			</div>
 		)
 	}
@@ -32,7 +27,6 @@ export class BookGoalCount extends Component {
 
 const mapStateToProps = (state, props) => ({
     counter: state.goals.goalBooks,
-    message: state.authentication.message
 });
 
 export default connect(mapStateToProps, actions)(BookGoalCount);

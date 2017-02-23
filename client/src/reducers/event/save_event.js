@@ -6,7 +6,7 @@ export default function (state=[], action) {
 		case SAVE_EVENT:
 			return [ ...state, action.payload ];
 		case UPDATE_ACTIVITY:
-			return [ ...state, action.payload ];
+			return action.payload;
 		default: 
 			return state;
 	}

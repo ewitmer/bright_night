@@ -1,5 +1,6 @@
 import { BOOK_GOAL_INCREMENT } from '../../actions/index';
 import { BOOK_GOAL_DECREMENT } from '../../actions/index';
+import { UPDATE_GOALS_BOOK } from '../../actions/index';
 
 
 // returns a count that cannot go below 0 or above 15
@@ -9,6 +10,8 @@ export default function (state = 0, action) {
       return Math.min(state + 1, 15)
     case BOOK_GOAL_DECREMENT:
       return Math.max(state - 1, 0)
+    case UPDATE_GOALS_BOOK:
+      return action.payload
     default:
       return state
   }

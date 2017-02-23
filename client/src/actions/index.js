@@ -67,6 +67,18 @@ export const dayGoalDecrement = () => ({
     type: DAY_GOAL_DECREMENT
 });
 
+export const UPDATE_GOALS_BOOK = 'UPDATE_GOALS_BOOK';
+export const updateGoalsBook = (goal) => ({
+    type: UPDATE_GOALS_BOOK,
+    payload: goal
+})
+
+export const UPDATE_GOALS_DAY = 'UPDATE_GOALS_DAY';
+export const updateGoalsDay = (goal) => ({
+    type: UPDATE_GOALS_DAY,
+    payload: goal
+})
+
 /*/////////////////////////////////////////////
         AUTHORIZE USER ACTIONS
 /////////////////////////////////////////////*/
@@ -90,10 +102,10 @@ export function authError(error) {
 }
 
 
-export const FETCH_MSG = 'FETCH_MSG';
-export const fetchMsg = (message) => ({
-    type: FETCH_MSG,
-    payload: message
+export const FETCH_DATA = 'FETCH_DATA';
+export const fetchData = (data) => ({
+    type: FETCH_DATA,
+    payload: data
 })
 
 export const UPDATE_ACTIVITY = 'UPDATE_ACTIVITY';
@@ -101,6 +113,7 @@ export const updateActivity = (array) => ({
     type: UPDATE_ACTIVITY,
     payload: array
 })
+
 
 export function signinUser({ email, password }) {
     return function(dispatch) {
@@ -124,7 +137,7 @@ export function signinUser({ email, password }) {
             localStorage.setItem('user', object.user);
 
             //redirect to feature
-            browserHistory.push('/header');
+            browserHistory.push('/');
         }).catch(response => {
             //request fails
             dispatch(authError('Incorrect Username or Password'))
@@ -157,7 +170,7 @@ export function signupUser({ email, password }) {
                 localStorage.setItem('user', object.user)
 
                 //redirect to feature
-                browserHistory.push('/header');
+                browserHistory.push('/');
             }
         }).catch(response => {
 
@@ -175,32 +188,11 @@ export function signoutUser() {
 
 
 
-const SUCCESS_MSG = 'SUCCESS_MSG'
+export const SUCCESS_MSG = 'SUCCESS_MSG'
 export function successMsg(message) {
     return {
         type: SUCCESS_MSG,
         payload: message
-    }
-}
-
-export function fetchMessage() {
-    return function(dispatch) {
- 
-        // submit email & pw to server
-        fetch('/auth', {
-            method: 'GET',
-            headers: { authorization: localStorage.getItem("token")}
-        }).then(response => {
-            console.log(response)
-            return response.json();
-       
-        }).then(object => {
-            dispatch(fetchMsg(object.message))
-            console.log(object)
-        }).catch(response => {
-
-            dispatch(authError('Error'))
-        })
     }
 }
 
@@ -217,20 +209,78 @@ export function logEvent(event) {
             return response.json();
 
         }).then(object => {
-            console.log(object)
+
             if (object.error) {
                 dispatch(authError(object.error))
             } else if (object.message) {
                 dispatch(successMsg(object.message))
                 dispatch(updateActivity(object.activity))
             }
-    }).catch(response => {
 
+        }).then( setTimeout(function() { dispatch(successMsg("")); }, 3000) )
+        .catch(response => {
             dispatch(authError('Error'))
         })
     }
 }
 
 
+export function updateGoals({ goalBooks, goalDays }) {
+    return function(dispatch) {
+ 
+        // submit email & pw to server
+        fetch('/goals', {
+            method: 'POST',
+            headers: { authorization: localStorage.getItem("token")},
+            body: JSON.stringify({
+                id: localStorage.getItem("user"),
+                goalBooks: goalBooks,
+                goalDays: goalDays})
+        }).then(response => {
+  
+            return response.json();
+       
+        }).then(object => {
 
+            console.log(object)
+           if (object.error) {
+                dispatch(authError(object.error))
+
+            } else if (object.message) {
+                
+                dispatch(successMsg(object.message));
+                dispatch(updateGoalsDay(object.goals.goalDays));
+                dispatch(updateGoalsBook(object.goals.goalBooks));
+            } 
+
+        }).then( setTimeout(function() { dispatch(successMsg("")); }, 3000) )
+        .catch(response => {
+            //request fails
+            dispatch(authError('Error'))
+        })
+    }
+}
+
+export function fetchAllData() {
+    return function(dispatch) {
+        const id = localStorage.getItem("user");
+        // submit email & pw to server
+        fetch('/data/'+id, {
+            method: 'GET',
+            headers: { authorization: localStorage.getItem("token")}
+        }).then(response => {
+            console.log(response)
+            return response.json();
+       
+        }).then(object => {
+            dispatch(updateActivity(object.activity))
+            dispatch(updateGoalsDay(object.goals.goalDays));
+            dispatch(updateGoalsBook(object.goals.goalBooks));
+            console.log(object)
+        }).catch(response => {
+
+            dispatch(authError('Error'))
+        })
+    }
+}
 

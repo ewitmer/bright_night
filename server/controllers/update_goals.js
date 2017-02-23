@@ -1,30 +1,30 @@
 const User = require('../models/users');
 
-exports.logEvent = function(req, res, next) {
+exports.updateGoals = function(req, res, next) {
 	// check if user exists
-
 	const id = req.body.id;
-	const event = req.body.event;
+	const goalBooks = req.body.goalBooks;
+	const goalDays = req.body.goalDays;
 
 	if (!id) {
 		return res.status(422).send({error: "You must create an account"})
 	}
-
-	User.findByIdAndUpdate(id, { $push: {eventArray: event} }, function(err, user) {
+	console.log(req.body)
+	
+	User.findByIdAndUpdate(id, { $set: { goals: {goalBooks: goalBooks, goalDays: goalDays} } }, function(err, user) {
 		if (err) { return next(err) } 
 
 		res.json({ 
-			activity: user.eventArray,
-			message: "Your reading has been saved!"
+			goals: user.goals,
+			message: "Your goals have been updated!"
 		});
 	})
 }
 
-exports.getLogEvent = function(req, res, next) {
+exports.getGoals = function(req, res, next) {
 	// check if user exists
-	console.log(req.body)
 	const id = req.body.id;
-
+	console.log(req.body)
 	if (!id) {
 		return res.status(422).send({error: "You are not logged in"})
 	}
@@ -33,7 +33,7 @@ exports.getLogEvent = function(req, res, next) {
 		if (err) { return next(err) } 
 
 		res.json({ 
-			activity: user.eventArray
+			activity: user.goals
 		});
 	})
 }
