@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import styles from './Navigation.css';
 
 
 class Navigation extends Component {
@@ -9,24 +8,30 @@ class Navigation extends Component {
 		//if user is authenticated,
 		if (this.props.authenticated) {
 			return [
-				<li key={1} className={styles.Big}>
+				<li key={0} >
+					<Link to="/">Home</Link>
+				</li>,
+				<li key={1} >
 					<Link to="/signout">Sign Out</Link>
 				</li>,
-				<li key={2} className={Navigation}>
+				<li key={2} >
 					<Link to="/log">Log Reading</Link>
 				</li>,	
-				<li key={3} className={Navigation}>
+				<li key={3} >
 					<Link to="/goals">Set Goals</Link>
 				</li>,
-				<li key={4} className={Navigation}>
+				<li key={4} >
 					<Link to="/progress">View Progress</Link>
 				</li>
 		]} else {
 			return [
-				<li key={1} className={styles.Big}>
+				<li key={0} >
+					<Link to="/">Home</Link>
+				</li>,
+				<li key={1} >
 					<Link to="/signin">Sign In</Link>
 				</li>,
-				<li key={2} className={styles.Big}>
+				<li key={2} >
 					<Link to="/signup">Sign Up</Link>
 				</li>
 			];
@@ -36,8 +41,7 @@ class Navigation extends Component {
 	render() {
 		return (
 			<nav>
-				<Link to="/">Logo</Link>
-				<ul className={Navigation}>
+				<ul className="Navigation">
 					{this.renderLinks()}
 				</ul>
 			</nav>
