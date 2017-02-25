@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-
+import Hero from './hero';
 
 export default class Home extends Component {
 
-	render() {
-		  return (
-		 	<div>
-  				<h1 className="Hero">brigth night</h1>
-			</div>
-		 )
-	}
-}
+  render() {
 
+    return (
+      <div >
+      	<Hero />
+      </div>
+    );
+  }
+}
