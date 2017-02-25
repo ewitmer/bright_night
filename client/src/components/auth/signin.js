@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import { Link } from 'react-router';
 
 class Signin extends Component {
 
@@ -18,27 +19,36 @@ class Signin extends Component {
 	renderAlert() {
 		if (this.props.errorMessage) {
 			return (
-				<div>{this.props.errorMessage}</div>		
+				<div className="Error-msg">{this.props.errorMessage}</div>		
 			);
 		}
 	}
 
 	render() {
-		const signedIn = (this.props.authenticated) ? "Sign Out" : "Sign In";
+		const signedIn = (this.props.authenticated) ? "SIGN OUT" : "LOGIN";
 
 		return (
-			<form onSubmit={this.handleFormSubmit.bind(this)}>
-				<fieldset>
-					<label>Email</label>
-					<input id="email" />
-				</fieldset>
-				<fieldset>
-					<label>Password</label>
-					<input type="password" id="password" />
-				</fieldset>
-				{this.renderAlert()}
-				<button action="submit">{signedIn}</button>
-			</form>
+			<div className="Form-container">
+				<h1>Sign into your account:</h1>
+				<div className ="Form">
+					<form className="Form-box" onSubmit={this.handleFormSubmit.bind(this)}>
+						<fieldset>
+							<input type="text" placeholder="email" id="email" />
+						</fieldset>
+						<fieldset>
+							<input type="password" placeholder="password" id="password" />
+						</fieldset>
+						{this.renderAlert()}
+						<fieldset>
+							<button action="submit">{signedIn}</button>
+						</fieldset>
+						<fieldset>
+							<p >Not registered? <Link to="/signup">Sign Up</Link></p>
+						</fieldset>
+					</form>
+					
+				</div>
+			</div>
 		)
 	}
 }

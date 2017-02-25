@@ -1,0 +1,81 @@
+.Form-container {
+	background: linear-gradient(to right, #FC6171 , #F07E4E);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	color: #FFFFFF;
+}
+
+.Form {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	background: #FFFFFF;
+  	max-width: 600px;
+  	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.Form fieldset {
+	border: none;
+	padding: 15px 30px 0px 30px;
+}
+
+.Form-box {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+.Form-Container h1 {
+	color: #FFFFFF;
+}
+
+.Form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #425A65;
+}
+.Form button {
+  outline: 0;
+  background: #F07E4E;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.Form button:hover,.Form button:active,.Form button:focus {
+  background: #FC6171;
+}
+
+.Form p {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+  padding-bottom: 45px;
+}
+.Form a {
+  color: #F07E4E;
+  text-decoration: none;
+}
+
+.Form a:visited  {
+  color: #F07E4E;
+  text-decoration: none;
+}
+
+.Form a:hover  {
+  color: #FC6171;
+  text-decoration: none;
+}

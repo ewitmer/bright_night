@@ -7,7 +7,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.Hero-color {}
 .Hero-img {
   background: linear-gradient(to right, rgba(252, 97, 113, 0.3), rgba(240, 126, 78, 0.3)), url('../../img/bookshelf.jpeg');
   background-size: 100vw;
