@@ -11,7 +11,7 @@ export default class Hero extends Component {
 		  				<div className="Hero">bright</div>
 		  				<div className="Hero">night</div>
 		  			</div>
-				</div>
+		  		</div>
 			</div>
 		 )
 	}
