@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import { Link } from 'react-router';
 
 class Signup extends Component {
 
@@ -53,7 +54,7 @@ class Signup extends Component {
 	renderAlert() {
 		if (this.props.errorMessage) {
 			return (
-				<div>{this.props.errorMessage}</div>		
+				<div className="Error-msg">{this.props.errorMessage}</div>		
 			);
 		}
 	}
@@ -61,22 +62,29 @@ class Signup extends Component {
 	render() {
 
 		return (
-			<form onSubmit={this.handleFormSubmit.bind(this)}>
-				<fieldset>
-					<label>Email</label>
-					<input id="email" />
-				</fieldset>
-				<fieldset>
-					<label>Password</label>
-					<input type="password" id="password" />
-				</fieldset>
-				<fieldset>
-					<label>Confirm Password</label>
-					<input type="password" id="passwordConfirm" />
-				</fieldset>
-				{this.renderAlert()}
-				<button action="submit">Sign Up</button>
-			</form>
+			<div className="Form-container">
+				<h1>Create an account:</h1>
+				<div className="Form">	
+					<form className="Form-box" onSubmit={this.handleFormSubmit.bind(this)}>
+						<fieldset>
+							<input type="text" placeholder="email" id="email" />
+						</fieldset>
+						<fieldset>
+							<input type="password" placeholder="password" id="password" />
+						</fieldset>
+						<fieldset>
+							<input type="password" placeholder="confirm password" id="passwordConfirm" />
+						</fieldset>
+						{this.renderAlert()}
+						<fieldset>
+							<button action="submit">Sign Up</button>
+						</fieldset>
+						<fieldset>
+							<p >Already registered? <Link to="/signin">Sign In</Link></p>
+						</fieldset>
+					</form>
+				</div>
+			</div>
 		)
 	}
 }

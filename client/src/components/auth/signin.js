@@ -30,7 +30,7 @@ class Signin extends Component {
 		return (
 			<div className="Form-container">
 				<h1>Sign into your account:</h1>
-				<div className ="Form">
+				<div className="Form">
 					<form className="Form-box" onSubmit={this.handleFormSubmit.bind(this)}>
 						<fieldset>
 							<input type="text" placeholder="email" id="email" />

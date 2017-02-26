@@ -8,9 +8,9 @@ body {
 }
 
 .Hero-img {
-  background: linear-gradient(to right, rgba(252, 97, 113, 0.3), rgba(240, 126, 78, 0.3)), url('../../img/bookshelf.jpeg');
+  background: linear-gradient(to right, rgba(247, 247, 247, 0.4), rgba(247, 247, 247, 0.4)), url('../../img/hero.jpg');
   background-size: 100vw;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: space-around;
   margin: 0;
