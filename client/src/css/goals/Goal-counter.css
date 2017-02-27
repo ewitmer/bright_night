@@ -1,0 +1,24 @@
+.Goal-counter {
+	display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Event-medium {
+	font-size: 3em;
+}
+
+.Button-small {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Goal-counter > .Button-small button {
+  padding: 10px;
+  width: 40px;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}

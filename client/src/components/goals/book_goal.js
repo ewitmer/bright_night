@@ -16,11 +16,11 @@ export class BookGoalCount extends Component {
 
 	render() {
 		return (
-			<div className="Book-counter">
+			<div className="Goal-counter">
 				<div className="Button-small">
 					<button onClick={this.decrementClick}>-</button>
 					<button onClick={this.incrementClick}>+</button>
-					<span className="Event-large">{this.props.counter} books / day</span>
+					<span className="Event-medium">{this.props.counter}</span> books / day
 				</div>
 			</div>
 		)
