@@ -14,6 +14,7 @@ export class DisplayLog extends Component {
 		return (
 			<div>
 				<input type="date" value={this.props.date} onChange={this.handleChange}/>
+				<i className="fa fa-angle-right" onClick={this.handleChange}></i>
 			</div>
 		)
 	}

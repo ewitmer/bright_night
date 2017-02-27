@@ -26,6 +26,12 @@ export const saveComment = (comment) => ({
     payload: comment
 });
 
+export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const deleteComment = (index) => ({
+    type: DELETE_COMMENT,
+    payload: index
+});
+
 export const SAVE_DATE = 'SAVE_DATE';
 export const saveDate = (date) => ({
 	type: SAVE_DATE,
@@ -137,7 +143,7 @@ export function signinUser({ email, password }) {
             localStorage.setItem('user', object.user);
 
             //redirect to feature
-            browserHistory.push('/');
+            browserHistory.push('/log');
         }).catch(response => {
             //request fails
             dispatch(authError('Incorrect Username or Password'))
@@ -170,7 +176,7 @@ export function signupUser({ email, password }) {
                 localStorage.setItem('user', object.user)
 
                 //redirect to feature
-                browserHistory.push('/');
+                browserHistory.push('/log');
             }
         }).catch(response => {
 
@@ -276,7 +282,6 @@ export function fetchAllData() {
             dispatch(updateActivity(object.activity))
             dispatch(updateGoalsDay(object.goals.goalDays));
             dispatch(updateGoalsBook(object.goals.goalBooks));
-            console.log(object)
         }).catch(response => {
 
             dispatch(authError('Error'))
