@@ -1,6 +1,19 @@
 .Container-Progress {
 	display: flex;
-	justify-content: space-around;
 	height: 100vh;
 	align-items: center;
+	justify-content: space-around;
 } 
+
+@media all and (max-width: 800px) {
+  .Container-Progress {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .Container-Progress {
+    flex-direction: column;
+    padding: 0;
+  }
+}

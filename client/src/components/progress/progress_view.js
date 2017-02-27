@@ -7,9 +7,9 @@ export default class App extends Component {
 
     return (
       <div className="Container-Progress">
-      	<ProgressBar base="200" percent="0.3" hex="#FC6171"/>
-      	<ProgressBar base="200" percent="0.5" hex="#FC6171"/>
-      	<ProgressBar base="200" percent="0.1" hex="#FC6171"/>
+      	<div className="Progress"><ProgressBar base="200" percent="0.3" hex="#FC6171"/></div>
+      	<div className="Progress"><ProgressBar base="200" percent="0.5" hex="#FC6171"/></div>
+      	<div className="Progress"><ProgressBar base="200" percent="0.1" hex="#FC6171"/></div>
       </div>
     );
   }
