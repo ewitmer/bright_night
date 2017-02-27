@@ -3,3 +3,8 @@
 @import url('./css/home/Hero.css');
 @import url('./css/progress/Progress.css');
 @import url('./css/auth/Signin.css');
+@import url('./css/event/Event.css');
+@import url('./css/event/Book-counter.css');
+@import url('./css/event/Comment-list.css');
+@import url('./css/goals/Goals.css');
+@import url('./css/goals/Goal-counter.css');

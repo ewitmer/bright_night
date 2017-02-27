@@ -28,12 +28,14 @@ export class GoalSubmit extends Component {
 
   render() {
     return (
-      <div>
-          <h1>Set Your Reading Goals:</h1>
-          <DayGoalCount />
-          <BookGoalCount />
-          {this.renderAlert()}
-          <button onClick={this.handleSubmit.bind(this)}>Update Goals</button>
+      <div className="Goals-container">
+          <div className="Goals-box">
+            <h1>Set Your Reading Goals:</h1>
+            <DayGoalCount />
+            <BookGoalCount />
+            {this.renderAlert()}
+            <button onClick={this.handleSubmit.bind(this)}>Update Goals</button>
+        </div>
       </div>
     );
   }

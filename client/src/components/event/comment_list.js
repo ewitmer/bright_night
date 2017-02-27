@@ -12,11 +12,13 @@ export class CommentList extends Component {
 
 	render() {
 		const list = this.props.commentArray.map((comment, index) => { 
-			return <li id={index} onClick={this.removeItem.bind(this)} key={index}>{comment}</li>
+			return <li className="Comment-item" key={index}>{comment}<button id={index} onClick={this.removeItem.bind(this)} >x</button></li>
 		})
 
 		return (
-			<ul className="comment-list">{list}</ul>
+			<div className="Comment-list">
+				<ul>{list}</ul>
+			</div>
 		)
 	}
 }

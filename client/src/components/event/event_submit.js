@@ -32,16 +32,18 @@ export class EventSubmit extends Component {
 
   render() {
     return (
-      <div>
-          <h1>Log your reading:</h1>
-          <DatePicker />
-          <BookCounter />
-          <CommentBox />
-          <CommentList />
-         <form id="eventForm" onSubmit={this.handleSubmit.bind(this)} className="event-box">
-          {this.renderAlert()}
-          <button action='submit'>Save Activity</button>
-        </form>
+      <div className="Event-container">
+          <div className="Event-box">
+            <h1>Log your reading for:</h1>
+            <DatePicker />
+            <BookCounter />
+            <CommentBox />
+            <CommentList />
+           <form id="eventForm" onSubmit={this.handleSubmit.bind(this)} className="event-box">
+            {this.renderAlert()}
+            <button action='submit'>Save Activity</button>
+          </form>
+        </div>
       </div>
     );
   }

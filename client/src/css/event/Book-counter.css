@@ -1,0 +1,23 @@
+.Book-counter {
+	display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Event-large {
+	font-size: 4em;
+}
+
+.Button-small {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Button-small button {
+  width: 40px;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}

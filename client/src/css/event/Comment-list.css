@@ -1,0 +1,35 @@
+.Comment-list {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Comment-list ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.Comment-item {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border-bottom: 1px dashed #E7E7E7;
+ 	border-top: 1px dashed #E7E7E7;
+}
+
+.Comment-item button {
+  background: #EA696A;
+  display: flex;
+  width: auto;
+  height: auto;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-left: auto;
+}

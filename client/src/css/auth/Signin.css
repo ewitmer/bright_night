@@ -79,3 +79,7 @@
   color: #FC6171;
   text-decoration: none;
 }
+
+.Error-msg {
+	color: red;
+}

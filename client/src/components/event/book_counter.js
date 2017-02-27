@@ -17,10 +17,12 @@ export class BookCounter extends Component {
 	render() {
 			console.log(store)
 		return (
-			<div>
-				{this.props.count}
-				<button onClick={this.decrementClick}>-</button>
-				<button onClick={this.incrementClick}>+</button>
+			<div className="Book-counter">
+				<div className="Button-small">
+					<button onClick={this.decrementClick}>-</button>
+					<button onClick={this.incrementClick}>+</button>
+					<span className="Event-large">{this.props.count} books</span>
+				</div>
 			</div>
 		)
 	}
