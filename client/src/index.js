@@ -6,7 +6,7 @@ import App from './App';
 import './index.css';
 import requireAuth from './components/auth/require_auth';
 import GoalSubmit from './components/goals/goal_submit';
-import EventSubmit from './components/event/event_submit';
+import DisplayLog from './components/event/display_log';
 import ProgressView from './components/progress/progress_view';
 import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
@@ -35,7 +35,7 @@ ReactDOM.render(
 				<IndexRoute component={Home} />
 				<Route path="/goals" component={requireAuth(GoalSubmit)}>
 				</Route>
-				<Route path="/log" component={EventSubmit}>
+				<Route path="/log" component={DisplayLog}>
 				</Route>
 				<Route path="/progress" component={requireAuth(ProgressView)}>
 				</Route>

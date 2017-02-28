@@ -5,6 +5,7 @@ import eventArray from './event/save_event';
 import goals from './goals/goals';
 import authentication from './auth/authentication';
 import response from './serv/response';
+import totals from './progress/total_books';
 
 
 export default combineReducers({
@@ -13,5 +14,6 @@ export default combineReducers({
   eventArray,
   goals,
   authentication,
-  response
+  response,
+  totals
 })

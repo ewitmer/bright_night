@@ -15,7 +15,7 @@ export class BookCounter extends Component {
 	}
 
 	render() {
-			console.log(store)
+
 		return (
 			<div className="Book-counter">
 				<div className="Button-small">

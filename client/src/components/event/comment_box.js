@@ -21,6 +21,7 @@ export class CommentBox extends Component {
 			<form id="commentForm" onSubmit={this.handleSubmit.bind(this)} className="comment-box">
 				<h3>Record the books you read, or add some thoughts:</h3>
 				<input
+					placeholder="Add books here"
 					value={this.props.comment}
 					onChange={this.handleChange.bind(this)} />
 				<button action='submit'>Add to List</button>

@@ -12,9 +12,15 @@ exports.fetchData = function(req, res, next) {
 	User.findById(id, function(err, user) {
 		if (err) { return next(err) } 
 
+		const totalBooks = user.eventArray.reduce((acc, val) => {
+    		return acc + val.counter
+  		},0);
+
 		res.json({ 
 			activity: user.eventArray,
-			goals: user.goals
+			goals: user.goals,
+			totalBooks: totalBooks
+
 		});
 	})
 }

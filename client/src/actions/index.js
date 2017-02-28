@@ -85,6 +85,12 @@ export const updateGoalsDay = (goal) => ({
     payload: goal
 })
 
+export const TOTAL_BOOKS = 'TOTAL_BOOKS';
+export const totalBooks = (books) => ({
+    type: TOTAL_BOOKS,
+    payload: books
+})
+
 /*/////////////////////////////////////////////
         AUTHORIZE USER ACTIONS
 /////////////////////////////////////////////*/
@@ -221,6 +227,7 @@ export function logEvent(event) {
             } else if (object.message) {
                 dispatch(successMsg(object.message))
                 dispatch(updateActivity(object.activity))
+                dispatch(totalBooks(object.totalBooks))
             }
 
         }).then( setTimeout(function() { dispatch(successMsg("")); }, 3000) )
@@ -280,6 +287,7 @@ export function fetchAllData() {
        
         }).then(object => {
             dispatch(updateActivity(object.activity))
+            dispatch(totalBooks(object.totalBooks))
             dispatch(updateGoalsDay(object.goals.goalDays));
             dispatch(updateGoalsBook(object.goals.goalBooks));
         }).catch(response => {

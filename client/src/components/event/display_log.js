@@ -1,26 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../actions'
-import store from '../../store';
+import EventSubmit from './event_submit';
+import TotalBooks from '../progress/total_books'
 
-export class DisplayLog extends Component {
+export default class DisplayLog extends Component {
 
-	handleChange(event) {
-
-		store.dispatch(actions.saveDate(event.target.value));
-	}
 
 	render() {
 		return (
-			<div>
-				<input type="date" value={this.props.date} onChange={this.handleChange}/>
+			<div className="Log-container">
+				<EventSubmit />
+				<TotalBooks />
 			</div>
 		)
 	}
 }
-
-const mapStateToProps = (state) => ({
-    date: state.logEvent.date
-});
-
-export default connect(mapStateToProps)(DisplayLog);

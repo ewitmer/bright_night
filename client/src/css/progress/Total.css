@@ -1,0 +1,14 @@
+.Total-container {
+ 	display: flex;
+	align-items: center;  
+	justify-content: space-around;
+}
+
+.Total-box {
+	margin: 20px;
+}
+
+.Extra-large {
+	font-size: 5em;
+	color: #FC6171;
+}
