@@ -6,7 +6,6 @@ import CommentBox from './comment_box';
 import CommentList from './comment_list';
 import BookCounter from './book_counter';
 import DatePicker from './date_picker';
-import TotalBooks from '../progress/total_books';
 
 
 export class EventSubmit extends Component {

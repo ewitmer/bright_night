@@ -1,9 +1,16 @@
 .Container-Progress {
 	display: flex;
-	height: 100vh;
+  flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
 } 
+
+.Container-Progress div {
+  font-size: 2em;
+  text-align: center;
+  line-height: 1.2em;
+  padding:1em;
+}
 
 @media all and (max-width: 800px) {
   .Container-Progress {

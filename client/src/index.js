@@ -25,6 +25,7 @@ if (token) {
 }
 
 if (user) {
+	console.log('fetch')
 	store.dispatch(fetchAllData());
 }
 

@@ -7,6 +7,7 @@
 
 .Event-container {
   display: flex;
+  flex-grow: 1;
 	align-items: center;  
 	justify-content: space-around;
 }
@@ -41,16 +42,14 @@
   background: #FC6171;
 }
 
-@media all and (max-width: 800px) {
-  .Log-container {
-    justify-content: space-around;
-  }
-}
 
 @media all and (max-width: 800px) {
   .Log-container {
     flex-flow: column wrap;
     align-items: center; 
     padding: 0;
+  }
+  .Event-large {
+    font-size: 2em;
   }
 }

@@ -91,6 +91,18 @@ export const totalBooks = (books) => ({
     payload: books
 })
 
+export const DAYS_GOAL = 'DAYS_GOAL';
+export const daysGoal = (goalObject) => ({
+    type: DAYS_GOAL,
+    payload: goalObject
+})
+
+export const WEEKS_GOAL = 'WEEKS_GOAL';
+export const weeksGoal = (goalObject) => ({
+    type: WEEKS_GOAL,
+    payload: goalObject
+})
+
 /*/////////////////////////////////////////////
         AUTHORIZE USER ACTIONS
 /////////////////////////////////////////////*/
@@ -112,7 +124,6 @@ export function authError(error) {
         payload: error
     }
 }
-
 
 export const FETCH_DATA = 'FETCH_DATA';
 export const fetchData = (data) => ({
@@ -147,7 +158,7 @@ export function signinUser({ email, password }) {
             // save jwt token from response 
             localStorage.setItem('token', object.token);
             localStorage.setItem('user', object.user);
-
+            dispatch(fetchAllData())
             //redirect to feature
             browserHistory.push('/log');
         }).catch(response => {
@@ -286,8 +297,11 @@ export function fetchAllData() {
             return response.json();
        
         }).then(object => {
+            console.log(object)
             dispatch(updateActivity(object.activity))
             dispatch(totalBooks(object.totalBooks))
+            dispatch(daysGoal(object.dailyGoals))
+            dispatch(weeksGoal(object.weeklyGoals))
             dispatch(updateGoalsDay(object.goals.goalDays));
             dispatch(updateGoalsBook(object.goals.goalBooks));
         }).catch(response => {

@@ -54,7 +54,9 @@ class Signup extends Component {
 	renderAlert() {
 		if (this.props.errorMessage) {
 			return (
-				<div className="Error-msg">{this.props.errorMessage}</div>		
+				<fieldset>
+					<div className="Error-msg">{this.props.errorMessage}</div>
+				</fieldset>		
 			);
 		}
 	}
@@ -75,7 +77,7 @@ class Signup extends Component {
 						<fieldset>
 							<input type="password" placeholder="confirm password" id="passwordConfirm" />
 						</fieldset>
-						{this.renderAlert()}
+							{this.renderAlert()}
 						<fieldset>
 							<button action="submit">Sign Up</button>
 						</fieldset>

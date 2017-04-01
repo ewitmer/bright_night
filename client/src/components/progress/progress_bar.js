@@ -14,7 +14,7 @@ export default function ProgressBar(props) {
     <animate attributeType="XML" attributeName="stroke-dashoffset" from={circumference} to={offset} dur="1s" fill="freeze" />
   </circle>
   <text className="progress-text" x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" stroke={props.hex}>
-      {(props.percent * 100)}%
+      {Math.round(props.percent * 100)}%
     </text>
 </svg>
 }

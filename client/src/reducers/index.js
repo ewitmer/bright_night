@@ -6,6 +6,8 @@ import goals from './goals/goals';
 import authentication from './auth/authentication';
 import response from './serv/response';
 import totals from './progress/total_books';
+import progressDay from './progress/progress_day';
+import progressWeek from './progress/progress_week';
 
 
 export default combineReducers({
@@ -15,5 +17,7 @@ export default combineReducers({
   goals,
   authentication,
   response,
-  totals
+  totals,
+  progressDay,
+  progressWeek
 })

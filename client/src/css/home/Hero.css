@@ -8,9 +8,9 @@ body {
 }
 
 .Hero-img {
-  background: linear-gradient(to right, rgba(247, 247, 247, 0.2), rgba(247, 247, 247, 0.2)), url('../../img/hero.jpg');
+  background: linear-gradient(to right, rgba(252, 97, 113, 0.7), rgba(240, 126, 78, 0.7)), url('../../img/hero.jpg');
   background-size: 100vw;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   justify-content: space-around;
   margin: 0;
@@ -19,8 +19,8 @@ body {
 
 .Hero-box {
 	display: flex;
-	background-color: #114B5F;
-	border: 3px solid #C6D8D3;
+	background-color: rgba(252, 97, 113, 0.8);
+	border: 3px solid #FFFFFF;
 	height: 300px;
 	width: 300px;
 	flex-direction: column;
