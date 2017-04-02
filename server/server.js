@@ -10,6 +10,9 @@ const app = express()
 
 
 //App setup
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
 
 app.use(morgan('combined'));
 app.use(bodyParser.json({ type: '*/*'}));

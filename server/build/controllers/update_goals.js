@@ -24,22 +24,3 @@ exports.updateGoals = function (req, res, next) {
 		});
 	});
 };
-
-exports.getGoals = function (req, res, next) {
-	// check if user exists
-	var id = req.body.id;
-	console.log(req.body);
-	if (!id) {
-		return res.status(422).send({ error: "You are not logged in" });
-	}
-
-	User.findById(id, function (err, user) {
-		if (err) {
-			return next(err);
-		}
-
-		res.json({
-			activity: user.goals
-		});
-	});
-};

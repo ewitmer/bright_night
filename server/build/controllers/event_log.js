@@ -12,34 +12,19 @@ exports.logEvent = function (req, res, next) {
 		return res.status(422).send({ error: "You must create an account" });
 	}
 
-	User.findByIdAndUpdate(id, { $push: { eventArray: event } }, function (err, user) {
-		if (err) {
-			return next(err);
-		}
+	User.findByIdAndUpdate(id, { $push: { eventArray: event } }, { new: true }, function (err, user) {
+		if (err) return next(err);
+
+		var totalBooks = user.eventArray.reduce(function (acc, val) {
+			return acc + val.counter;
+		}, 0);
+
+		console.log(totalBooks);
 
 		res.json({
 			activity: user.eventArray,
+			totalBooks: totalBooks,
 			message: "Your reading has been saved!"
-		});
-	});
-};
-
-exports.getLogEvent = function (req, res, next) {
-	// check if user exists
-	console.log(req.body);
-	var id = req.body.id;
-
-	if (!id) {
-		return res.status(422).send({ error: "You are not logged in" });
-	}
-
-	User.findById(id, function (err, user) {
-		if (err) {
-			return next(err);
-		}
-
-		res.json({
-			activity: user.eventArray
 		});
 	});
 };
