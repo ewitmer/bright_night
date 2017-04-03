@@ -6,7 +6,8 @@
   "scripts": {
     "build": "babel . --ignore node_modules,build --out-dir build",
     "start": "nodemon -r babel-register server.js",
-    "start:prod": "node build/server.js"
+    "start:prod": "node build/server.js",
+    "install": "cd client && npm run build && cd .."
   },
   "author": "",
   "license": "ISC",
